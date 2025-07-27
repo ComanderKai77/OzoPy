@@ -1,8 +1,13 @@
 import asyncio
 import struct
+
 from bleak import BleakScanner, BleakClient
 from bleak.backends.characteristic import BleakGATTCharacteristic
 from time import sleep
+
+from .commandType import CommandType
+from .emotion import Emotion
+from .led import LED 
 
 class OzoPy:
     """Class for controlling an Ozobot-Evo
@@ -10,20 +15,20 @@ class OzoPy:
     MOTOR_CHARACTERISTIC_ID = 19
     DEFAULT_CHARACTERISTIC_ID = 30
 
-    def __init__(self, mac: str) -> None:
+    def __init__(self, address: str) -> None:
         """Creates a new instance of OzoPy
 
         Args:
-            mac (str): Address of the robot
+            address (str): Address of the robot
         """
-        self.__client = BleakClient(ADDRESS, address_type="random")
+        self.__client = BleakClient(address, address_type="random")
         
     async def connect(self) -> None:
         """Connect to the robot
         """
         await self.__client.connect()
-        self.__motor_characteristic = self.__getCharacteristic(OzoBot.MOTOR_CHARACTERISTIC_ID)
-        self.__default_characteristic = self.__getCharacteristic(OzoBot.DEFAULT_CHARACTERISTIC_ID)
+        self.__motor_characteristic = self.__getCharacteristic(OzoPy.MOTOR_CHARACTERISTIC_ID)
+        self.__default_characteristic = self.__getCharacteristic(OzoPy.DEFAULT_CHARACTERISTIC_ID)
 
         # disable autonomous live
         await self.__sendCommand("780000000000")
@@ -110,8 +115,8 @@ class OzoPy:
         """
         await self.__sendCommand("6800015cad020000000000000000ffffffff")
 
-    async def play_sound(self, emotion: Emotion, wait: bool = True) -> None:
-        """Play a sound / emotion
+    async def play_emotion(self, emotion: Emotion, wait: bool = True) -> None:
+        """Play an emotion
 
         Args:
             emotion (Emotion): Emotion
