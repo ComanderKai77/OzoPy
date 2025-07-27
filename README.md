@@ -14,7 +14,7 @@ from src.led import LED
 
 async def main():
     # search robots
-    robots = await OzoPy.serach() # {'Ozobot': 'xx:xx:xx:xx:xx:xx'}
+    robots = await OzoPy.search() # {'Ozobot': 'xx:xx:xx:xx:xx:xx'}
     print(robots)
 
     # connect to a robot
