@@ -1,6 +1,6 @@
 from enum import Flag
 
-class LED(Flag):
+class Led(Flag):
     """Bit flags for each led
     """
     TOP = 1

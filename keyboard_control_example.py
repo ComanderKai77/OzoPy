@@ -6,7 +6,7 @@ from getch import getch
 
 from src.ozopy import OzoPy
 from src.emotion import Emotion
-from src.led import LED
+from src.led import Led
 
 async def main():
     ozo = OzoPy(input("Please enter the robot address: "))

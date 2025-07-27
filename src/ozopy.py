@@ -7,7 +7,7 @@ from time import sleep
 
 from .commandType import CommandType
 from .emotion import Emotion
-from .led import LED 
+from .led import Led 
 
 class OzoPy:
     """Class for controlling an Ozobot-Evo
@@ -51,7 +51,7 @@ class OzoPy:
         """
         return self.__client.is_connected
 
-    async def set_leds(self, leds: LED = LED.ALL, red: int = 0, green: int = 0, blue: int = 0) -> None:
+    async def set_leds(self, leds: Led = Led.ALL, red: int = 0, green: int = 0, blue: int = 0) -> None:
         """Control the leds of the robot
 
         Args:

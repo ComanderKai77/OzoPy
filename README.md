@@ -10,7 +10,7 @@ import asyncio
 
 from src.ozopy import OzoPy
 from src.emotion import Emotion
-from src.led import LED
+from src.led import Led
 
 async def main():
     # search robots
@@ -22,7 +22,7 @@ async def main():
     await robot.connect()
 
     # control the leds of the robot
-    await robot.set_leds(leds=LED.ALL, red=0, green=255, blue=0)
+    await robot.set_leds(leds=Led.ALL, red=0, green=255, blue=0)
 
     # drive forwards
     await robot.control_motors(speed=10, duration=5)
