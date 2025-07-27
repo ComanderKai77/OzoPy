@@ -37,7 +37,7 @@ async def main():
             case "b":
                 await ozo.set_leds(blue=255)
             case "e":
-                await ozo.play_sound(Emotion.HAPPY, wait=False)
+                await ozo.play_emotion(Emotion.HAPPY, wait=False)
             case _:
                 await ozo.stop_movement()
 
