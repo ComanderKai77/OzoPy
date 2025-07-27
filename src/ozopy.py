@@ -163,7 +163,7 @@ class OzoPy:
             return await self.__client.write_gatt_char(self.__default_characteristic, command, response = wait_for_response)
 
     @staticmethod
-    async def serach(prefix: str = "Ozo", timeout: int = 10) -> dict[str, str]:
+    async def search(prefix: str = "Ozo", timeout: int = 10) -> dict[str, str]:
         """Search nearby OzoBots
 
         Args:
